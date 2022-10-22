@@ -8,6 +8,8 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
 {
     private Controls controls;
 
+    public Vector2 MovementValue { get; private set; }
+
     public event Action OnJumpEvent;
     public event Action OnDodgeEvent;
 
@@ -38,5 +40,10 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
             return;
 
         OnDodgeEvent?.Invoke();
+    }
+
+    public void OnMove(InputAction.CallbackContext context)
+    {
+        MovementValue = context.ReadValue<Vector2>();
     }
 }
