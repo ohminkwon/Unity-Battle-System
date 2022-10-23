@@ -16,13 +16,9 @@ public class PlayerTestState : PlayerBaseState
     }
     public override void Tick(float deltaTime)
     {
-        Vector3 movement = new Vector3();
+        Vector3 moveDir = CalculateMoveDirection();     
 
-        movement.x = stateMachine.InputReader.MovementValue.x;
-        movement.y = 0;
-        movement.z = stateMachine.InputReader.MovementValue.y;
-
-        stateMachine.Controller.Move(movement * stateMachine.MoveSpeed * deltaTime);
+        stateMachine.Controller.Move(moveDir * stateMachine.MoveSpeed * deltaTime);
 
         if (stateMachine.InputReader.MovementValue == Vector2.zero)
         {
@@ -31,10 +27,27 @@ public class PlayerTestState : PlayerBaseState
         }
 
         stateMachine.Animator.SetFloat("MoveSpeed", 1, 0.1f, deltaTime);
-        stateMachine.transform.rotation = Quaternion.LookRotation(movement);
+        stateMachine.transform.rotation = Quaternion.LookRotation(moveDir);
     }
     public override void Exit()
     {    
     
+    }
+
+    private Vector3 CalculateMoveDirection()
+    {
+        Vector3 forward = stateMachine.mainCameraTransform.forward;
+        Vector3 right = stateMachine.mainCameraTransform.right;
+
+        forward.y = 0f;
+        right.y = 0f;
+
+        forward.Normalize();
+        right.Normalize();
+
+        Vector3 vertical = forward * stateMachine.InputReader.MovementValue.y;
+        Vector3 horizontal = right * stateMachine.InputReader.MovementValue.x;
+
+        return vertical + horizontal;
     }
 }
