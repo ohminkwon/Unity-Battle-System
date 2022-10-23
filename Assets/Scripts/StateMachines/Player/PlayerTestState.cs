@@ -25,8 +25,12 @@ public class PlayerTestState : PlayerBaseState
         stateMachine.Controller.Move(movement * stateMachine.MoveSpeed * deltaTime);
 
         if (stateMachine.InputReader.MovementValue == Vector2.zero)
+        {
+            stateMachine.Animator.SetFloat("MoveSpeed", 0, 0.1f, deltaTime);
             return;
+        }
 
+        stateMachine.Animator.SetFloat("MoveSpeed", 1, 0.1f, deltaTime);
         stateMachine.transform.rotation = Quaternion.LookRotation(movement);
     }
     public override void Exit()

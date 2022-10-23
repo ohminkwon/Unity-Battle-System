@@ -1488,6 +1488,7 @@ MonoBehaviour:
   <InputReader>k__BackingField: {fileID: 5104323359457836603}
   <Controller>k__BackingField: {fileID: 7366984696582488015}
   <MoveSpeed>k__BackingField: 0
+  <Animator>k__BackingField: {fileID: 1102192910226513480}
 --- !u!114 &5104323359457836603
 MonoBehaviour:
   m_ObjectHideFlags: 0
