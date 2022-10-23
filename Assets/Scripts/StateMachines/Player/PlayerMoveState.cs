@@ -2,10 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerTestState : PlayerBaseState
+public class PlayerMoveState : PlayerBaseState
 {
+    private readonly int MOVE_SPEED = Animator.StringToHash("MoveSpeed");
+    private const float ANIM_DAMP_TIME = 0.1f;
+
     // Constructor
-    public PlayerTestState(PlayerStateMachine stateMachine) : base(stateMachine)
+    public PlayerMoveState(PlayerStateMachine stateMachine) : base(stateMachine)
     {
 
     }
@@ -22,12 +25,13 @@ public class PlayerTestState : PlayerBaseState
 
         if (stateMachine.InputReader.MovementValue == Vector2.zero)
         {
-            stateMachine.Animator.SetFloat("MoveSpeed", 0, 0.1f, deltaTime);
+            stateMachine.Animator.SetFloat(MOVE_SPEED, 0, ANIM_DAMP_TIME, deltaTime);
             return;
         }
 
-        stateMachine.Animator.SetFloat("MoveSpeed", 1, 0.1f, deltaTime);
-        stateMachine.transform.rotation = Quaternion.LookRotation(moveDir);
+        stateMachine.Animator.SetFloat(MOVE_SPEED, 1, ANIM_DAMP_TIME, deltaTime);
+
+        RotatePlayerToDirection(moveDir, deltaTime);
     }
     public override void Exit()
     {    
@@ -50,4 +54,12 @@ public class PlayerTestState : PlayerBaseState
 
         return vertical + horizontal;
     }
+    private void RotatePlayerToDirection(Vector3 moveDir, float deltaTime)
+    {
+        stateMachine.transform.rotation = Quaternion.Lerp(
+            stateMachine.transform.rotation, 
+            Quaternion.LookRotation(moveDir), 
+            deltaTime * stateMachine.RotationDamping
+        );
+    } 
 }
