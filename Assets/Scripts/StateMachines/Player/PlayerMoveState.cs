@@ -15,7 +15,7 @@ public class PlayerMoveState : PlayerBaseState
 
     public override void Enter()
     {
-        
+        stateMachine.InputReader.OnTargetEvent += StateMachine_InputReader_OnTargetEvent;
     }
     public override void Tick(float deltaTime)
     {
@@ -34,8 +34,8 @@ public class PlayerMoveState : PlayerBaseState
         RotatePlayerToDirection(moveDir, deltaTime);
     }
     public override void Exit()
-    {    
-    
+    {
+        stateMachine.InputReader.OnTargetEvent -= StateMachine_InputReader_OnTargetEvent;
     }
 
     private Vector3 CalculateMoveDirection()
@@ -62,4 +62,8 @@ public class PlayerMoveState : PlayerBaseState
             deltaTime * stateMachine.RotationDamping
         );
     } 
+    private void StateMachine_InputReader_OnTargetEvent()
+    {
+        stateMachine.SwitchState(new PlayerTargetingState(stateMachine));
+    }
 }
