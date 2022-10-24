@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class PlayerMoveState : PlayerBaseState
 {
-    private readonly int MOVE_SPEED = Animator.StringToHash("MoveSpeed");
+    private readonly int MOVE_SPEED_HASH = Animator.StringToHash("MoveSpeed"); // For optimization
     private const float ANIM_DAMP_TIME = 0.1f;
+    private readonly int FREE_LOOK_HASH = Animator.StringToHash("FreeLookBlendTree"); // For optimization
 
     // Constructor
     public PlayerMoveState(PlayerStateMachine stateMachine) : base(stateMachine)
@@ -16,6 +17,8 @@ public class PlayerMoveState : PlayerBaseState
     public override void Enter()
     {
         stateMachine.InputReader.OnTargetEvent += StateMachine_InputReader_OnTargetEvent;
+
+        stateMachine.Animator.Play(FREE_LOOK_HASH);
     }
     public override void Tick(float deltaTime)
     {
@@ -25,11 +28,11 @@ public class PlayerMoveState : PlayerBaseState
 
         if (stateMachine.InputReader.MovementValue == Vector2.zero)
         {
-            stateMachine.Animator.SetFloat(MOVE_SPEED, 0, ANIM_DAMP_TIME, deltaTime);
+            stateMachine.Animator.SetFloat(MOVE_SPEED_HASH, 0, ANIM_DAMP_TIME, deltaTime);
             return;
         }
 
-        stateMachine.Animator.SetFloat(MOVE_SPEED, 1, ANIM_DAMP_TIME, deltaTime);
+        stateMachine.Animator.SetFloat(MOVE_SPEED_HASH, 1, ANIM_DAMP_TIME, deltaTime);
 
         RotatePlayerToDirection(moveDir, deltaTime);
     }
