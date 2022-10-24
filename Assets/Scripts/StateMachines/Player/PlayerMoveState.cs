@@ -64,6 +64,9 @@ public class PlayerMoveState : PlayerBaseState
     } 
     private void StateMachine_InputReader_OnTargetEvent()
     {
+        if (!stateMachine.Targeter.SelectTarget())
+            return;
+
         stateMachine.SwitchState(new PlayerTargetingState(stateMachine));
     }
 }
