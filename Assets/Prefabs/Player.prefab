@@ -550,7 +550,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59ae459b1da52974185b79bd61998f85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targets: []
   cinemachineTargetGroup: {fileID: 0}
 --- !u!135 &3488754618353404206
 SphereCollider:
@@ -563,7 +562,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 5
+  m_Radius: 10
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &763913678512836572
 Rigidbody:
@@ -1598,12 +1597,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <InputReader>k__BackingField: {fileID: 5104323359457836603}
   <Controller>k__BackingField: {fileID: 7366984696582488015}
-  <ForceReceiver>k__BackingField: {fileID: 6771337193476522176}
   <MoveSpeed>k__BackingField: 6
-  <TargetingMoveSpeed>k__BackingField: 5
   <RotationDamping>k__BackingField: 10
-  <Animator>k__BackingField: {fileID: 1102192910226513480}
   <Targeter>k__BackingField: {fileID: 2421849146328892801}
+  <TargetingMoveSpeed>k__BackingField: 5
+  <Animator>k__BackingField: {fileID: 1102192910226513480}
+  <ForceReceiver>k__BackingField: {fileID: 6771337193476522176}
 --- !u!114 &5104323359457836603
 MonoBehaviour:
   m_ObjectHideFlags: 0
