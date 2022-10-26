@@ -22,9 +22,10 @@ public class PlayerMoveState : PlayerBaseState
     }
     public override void Tick(float deltaTime)
     {
-        Vector3 moveDir = CalculateMoveDirection();     
+        Vector3 moveDir = CalculateMoveDirection();
 
-        stateMachine.Controller.Move(moveDir * stateMachine.MoveSpeed * deltaTime);
+        Move(moveDir * stateMachine.MoveSpeed, deltaTime);
+        //stateMachine.Controller.Move(moveDir * stateMachine.MoveSpeed * deltaTime);
 
         if (stateMachine.InputReader.MovementValue == Vector2.zero)
         {

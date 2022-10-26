@@ -551,6 +551,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targets: []
+  cinemachineTargetGroup: {fileID: 0}
 --- !u!135 &3488754618353404206
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1553,6 +1554,7 @@ GameObject:
   - component: {fileID: 5104323359457836603}
   - component: {fileID: 1102192910226513480}
   - component: {fileID: 7366984696582488015}
+  - component: {fileID: 6771337193476522176}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1596,6 +1598,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <InputReader>k__BackingField: {fileID: 5104323359457836603}
   <Controller>k__BackingField: {fileID: 7366984696582488015}
+  <ForceReceiver>k__BackingField: {fileID: 6771337193476522176}
   <MoveSpeed>k__BackingField: 6
   <RotationDamping>k__BackingField: 10
   <Animator>k__BackingField: {fileID: 1102192910226513480}
@@ -1650,6 +1653,19 @@ CharacterController:
   m_SkinWidth: 0.025
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0.875, z: 0.03}
+--- !u!114 &6771337193476522176
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5300486800986964529}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c378b090bdd54a042a50406aa2c4e534, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterController: {fileID: 7366984696582488015}
 --- !u!1 &5353502207680995690
 GameObject:
   m_ObjectHideFlags: 0
