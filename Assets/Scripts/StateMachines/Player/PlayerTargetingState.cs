@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class PlayerTargetingState : PlayerBaseState
 {
-    private readonly int TARGETING_HASH = Animator.StringToHash("TargetingBlendTree"); // For optimization
+    // For optimization
+    private readonly int TARGETING_HASH = Animator.StringToHash("TargetingBlendTree"); 
+    private readonly int TARGETING_FORWARD_HASH = Animator.StringToHash("TargetingForward"); 
+    private readonly int TARGETING_RIGHT_HASH = Animator.StringToHash("TargetingRight"); 
 
     // Constructor
     public PlayerTargetingState(PlayerStateMachine stateMachine) : base(stateMachine)
@@ -28,7 +31,7 @@ public class PlayerTargetingState : PlayerBaseState
 
         Vector3 targetDir = CalculateTargetDirection();        
         Move(targetDir * stateMachine.TargetingMoveSpeed, deltaTime);
-
+        UpdateAnimator(deltaTime);
         RotatePlayerToTarget();
     }
     public override void Exit()
@@ -51,5 +54,28 @@ public class PlayerTargetingState : PlayerBaseState
         targetDir += stateMachine.transform.forward * stateMachine.InputReader.MovementValue.y;
 
         return targetDir;
+    }
+
+    private void UpdateAnimator(float deltaTime)
+    {
+        if (stateMachine.InputReader.MovementValue.y == 0)
+        {
+            stateMachine.Animator.SetFloat(TARGETING_FORWARD_HASH, 0, 0.1f, deltaTime);
+        }
+        else
+        {
+            float value = stateMachine.InputReader.MovementValue.y > 0 ? 1f : -1f;
+            stateMachine.Animator.SetFloat(TARGETING_FORWARD_HASH, value, 0.1f, deltaTime);
+        }
+
+        if (stateMachine.InputReader.MovementValue.x == 0)
+        {
+            stateMachine.Animator.SetFloat(TARGETING_RIGHT_HASH, 0, 0.1f, deltaTime);
+        }
+        else
+        {
+            float value = stateMachine.InputReader.MovementValue.x > 0 ? 1f : -1f;
+            stateMachine.Animator.SetFloat(TARGETING_RIGHT_HASH, value, 0.1f, deltaTime);
+        }
     }
 }
