@@ -25,6 +25,11 @@ public class PlayerTargetingState : PlayerBaseState
             stateMachine.SwitchState(new PlayerMoveState(stateMachine));
             return;
         }
+
+        Vector3 targetDir = CalculateTargetDirection();        
+        Move(targetDir * stateMachine.TargetingMoveSpeed, deltaTime);
+
+        RotatePlayerToTarget();
     }
     public override void Exit()
     {
@@ -36,5 +41,15 @@ public class PlayerTargetingState : PlayerBaseState
         stateMachine.Targeter.Cancel();
 
         stateMachine.SwitchState(new PlayerMoveState(stateMachine));
+    }
+
+    private Vector3 CalculateTargetDirection()
+    {
+        Vector3 targetDir = new Vector3();
+
+        targetDir += stateMachine.transform.right * stateMachine.InputReader.MovementValue.x;
+        targetDir += stateMachine.transform.forward * stateMachine.InputReader.MovementValue.y;
+
+        return targetDir;
     }
 }

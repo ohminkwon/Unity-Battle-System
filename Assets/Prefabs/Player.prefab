@@ -1600,6 +1600,7 @@ MonoBehaviour:
   <Controller>k__BackingField: {fileID: 7366984696582488015}
   <ForceReceiver>k__BackingField: {fileID: 6771337193476522176}
   <MoveSpeed>k__BackingField: 6
+  <TargetingMoveSpeed>k__BackingField: 5
   <RotationDamping>k__BackingField: 10
   <Animator>k__BackingField: {fileID: 1102192910226513480}
   <Targeter>k__BackingField: {fileID: 2421849146328892801}

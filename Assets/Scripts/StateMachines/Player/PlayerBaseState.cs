@@ -16,4 +16,15 @@ public abstract class PlayerBaseState : State
     {
         stateMachine.Controller.Move((motion + stateMachine.ForceReceiver.Movement) * deltaTime);
     }
+
+    protected void RotatePlayerToTarget()
+    {
+        if (stateMachine.Targeter.CurrentTarget == null)
+            return;
+
+        Vector3 targetDir = stateMachine.Targeter.CurrentTarget.transform.position - stateMachine.transform.position;
+        targetDir.y = 0f;
+
+        stateMachine.transform.rotation = Quaternion.LookRotation(targetDir);
+    }
 }
