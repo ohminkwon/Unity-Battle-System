@@ -22,6 +22,12 @@ public class PlayerMoveState : PlayerBaseState
     }
     public override void Tick(float deltaTime)
     {
+        if (stateMachine.InputReader.IsAttacking)
+        {
+            stateMachine.SwitchState(new PlayerAttackState(stateMachine));
+            return;
+        }
+
         Vector3 moveDir = CalculateMoveDirection();
 
         Move(moveDir * stateMachine.MoveSpeed, deltaTime);
