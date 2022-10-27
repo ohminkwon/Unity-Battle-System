@@ -24,7 +24,7 @@ public class PlayerMoveState : PlayerBaseState
     {
         if (stateMachine.InputReader.IsAttacking)
         {
-            stateMachine.SwitchState(new PlayerAttackState(stateMachine));
+            stateMachine.SwitchState(new PlayerAttackState(stateMachine, 0));
             return;
         }
 
