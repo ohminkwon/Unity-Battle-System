@@ -1605,8 +1605,17 @@ MonoBehaviour:
   <ForceReceiver>k__BackingField: {fileID: 6771337193476522176}
   <Attacks>k__BackingField:
   - <animationName>k__BackingField: Attack1
+    <transitionDuration>k__BackingField: 0.1
+    <comboStateIndex>k__BackingField: 1
+    <comboAttackTime>k__BackingField: 0.6
   - <animationName>k__BackingField: Attack2
+    <transitionDuration>k__BackingField: 0.1
+    <comboStateIndex>k__BackingField: 2
+    <comboAttackTime>k__BackingField: 0.5
   - <animationName>k__BackingField: Attack3
+    <transitionDuration>k__BackingField: 0.1
+    <comboStateIndex>k__BackingField: -1
+    <comboAttackTime>k__BackingField: 0
 --- !u!114 &5104323359457836603
 MonoBehaviour:
   m_ObjectHideFlags: 0

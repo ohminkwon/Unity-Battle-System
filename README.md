@@ -1,5 +1,5 @@
 ## State Machine
-![Architecture]()
+![States](./Assets/Art/Sample/statemachine-example.png)
 
 ## New Input System
 ![New Input System](./Assets/Art/Sample/newInput.png)
