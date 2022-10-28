@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class PlayerMoveState : PlayerBaseState
 {
-    private readonly int MOVE_SPEED_HASH = Animator.StringToHash("MoveSpeed"); // For optimization
-    private const float ANIM_DAMP_TIME = 0.1f;
+    private readonly int MOVE_SPEED_HASH = Animator.StringToHash("MoveSpeed"); // For optimization   
     private readonly int FREE_LOOK_HASH = Animator.StringToHash("FreeLookBlendTree"); // For optimization
+
+    private const float ANIM_DAMP_TIME = 0.1f;
+    private const float CROSS_FADE_TIME = 0.1f;
 
     // Constructor
     public PlayerMoveState(PlayerStateMachine stateMachine) : base(stateMachine)
@@ -18,7 +20,7 @@ public class PlayerMoveState : PlayerBaseState
     {
         stateMachine.InputReader.OnTargetEvent += StateMachine_InputReader_OnTargetEvent;
 
-        stateMachine.Animator.Play(FREE_LOOK_HASH);
+        stateMachine.Animator.CrossFadeInFixedTime(FREE_LOOK_HASH, CROSS_FADE_TIME);
     }
     public override void Tick(float deltaTime)
     {
