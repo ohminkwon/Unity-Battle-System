@@ -16,12 +16,15 @@ public class EnemyAttackState : EnemyBaseState
 
     public override void Enter()
     {
-        enemyStateMachine.Weapon.SetAttack(enemyStateMachine.AttackDamage);
+        enemyStateMachine.Weapon.SetAttack(enemyStateMachine.AttackDamage, enemyStateMachine.AttackKnockback);
         enemyStateMachine.Animator.CrossFadeInFixedTime(ATTACK_HASH, CROSS_FADE_TIME);        
     }
     public override void Tick(float deltaTime)
     {
-
+        if (GetNormalizedTime(enemyStateMachine.Animator) >= 1f)
+        {           
+            enemyStateMachine.SwitchState(new EnemyChaseState(enemyStateMachine));
+        }        
     }
     public override void Exit()
     {

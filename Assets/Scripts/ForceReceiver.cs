@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class ForceReceiver : MonoBehaviour
 {
     [SerializeField] private CharacterController characterController;
+    [SerializeField] private NavMeshAgent navAgent;
     [SerializeField] private float smoothTime = 0.3f;
 
     private Vector3 impact;
@@ -26,10 +28,22 @@ public class ForceReceiver : MonoBehaviour
         }
 
         impact = Vector3.SmoothDamp(impact, Vector3.zero, ref dampingVelocity, smoothTime);
+
+        if (navAgent != null)
+        {
+            if (impact == Vector3.zero)
+            {
+                navAgent.enabled = true;
+            }
+        }        
     }
 
     public void AddForce(Vector3 force)
     {
         impact += force;
+        if(navAgent != null)
+        {
+            navAgent.enabled = false;
+        }
     }
 }

@@ -1596,6 +1596,7 @@ MonoBehaviour:
     <Damage>k__BackingField: 10
     <ForceTime>k__BackingField: 0.2
     <Force>k__BackingField: 8
+    <Knockback>k__BackingField: 15
   - <animationName>k__BackingField: Attack2
     <transitionDuration>k__BackingField: 0.1
     <comboStateIndex>k__BackingField: 2
@@ -1603,6 +1604,7 @@ MonoBehaviour:
     <Damage>k__BackingField: 15
     <ForceTime>k__BackingField: 0.2
     <Force>k__BackingField: 8
+    <Knockback>k__BackingField: 20
   - <animationName>k__BackingField: Attack3
     <transitionDuration>k__BackingField: 0.1
     <comboStateIndex>k__BackingField: -1
@@ -1610,6 +1612,7 @@ MonoBehaviour:
     <Damage>k__BackingField: 20
     <ForceTime>k__BackingField: 0.2
     <Force>k__BackingField: 10
+    <Knockback>k__BackingField: 25
   <Weapon>k__BackingField: {fileID: 1789439796921109675}
 --- !u!114 &5104323359457836603
 MonoBehaviour:
@@ -1674,6 +1677,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterController: {fileID: 7366984696582488015}
+  navAgent: {fileID: 0}
   smoothTime: 0.03
 --- !u!114 &8848854663377800352
 MonoBehaviour:
