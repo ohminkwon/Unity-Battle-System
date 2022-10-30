@@ -6,7 +6,9 @@ using UnityEngine.AI;
 public class EnemyStateMachine : StateMachine
 {
     [field: SerializeField] public CharacterController Controller { get; private set; }
+
     [field: SerializeField] public float PlayerChasingRange { get; private set; }
+    [field: SerializeField] public float AttackRange { get; private set; }
 
     [field: SerializeField] public Animator Animator { get; private set; }
     [field: SerializeField] public ForceReceiver ForceReceiver { get; private set; }
@@ -28,6 +30,6 @@ public class EnemyStateMachine : StateMachine
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, PlayerChasingRange);
+        Gizmos.DrawWireSphere(transform.position, AttackRange);
     }
 }

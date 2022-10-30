@@ -28,10 +28,16 @@ public class EnemyChaseState : EnemyBaseState
             enemyStateMachine.SwitchState(new EnemyIdleState(enemyStateMachine));          
             return;
         }
+        if (IsInAttackRange())
+        {
+            enemyStateMachine.SwitchState(new EnemyAttackState(enemyStateMachine));
+            return;
+        }
 
         enemyStateMachine.Animator.SetFloat(SPEED_HASH, 1f, ANIM_DAMP_TIME, deltaTime);
 
         MoveToPlayer(deltaTime);
+        RotateEnemyToPlayer();
     }
     public override void Exit()
     {
@@ -48,5 +54,15 @@ public class EnemyChaseState : EnemyBaseState
         Move(movDir * moveSpeed, deltaTime);
 
         enemyStateMachine.Agent.velocity = enemyStateMachine.Controller.velocity;
+    }
+    private bool IsInAttackRange()
+    {
+        Vector3 enemyPos = enemyStateMachine.transform.position;
+        Vector3 playerPos = enemyStateMachine.Player.transform.position;
+        float attackRange = enemyStateMachine.AttackRange;
+
+        float playerDistanceSqr = (playerPos - enemyPos).sqrMagnitude;
+
+        return playerDistanceSqr <= (attackRange * attackRange);
     }
 }

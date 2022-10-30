@@ -31,6 +31,8 @@ public class EnemyIdleState : EnemyBaseState
             return;
         }
 
+        RotateEnemyToPlayer();
+
         enemyStateMachine.Animator.SetFloat(SPEED_HASH, 0f, ANIM_DAMP_TIME, deltaTime);
     }
     public override void Exit()

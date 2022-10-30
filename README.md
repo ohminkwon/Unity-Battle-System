@@ -13,10 +13,12 @@
     * Paladin_J_Nordstrom
     * Knight_D_Pelegrini
   * Locomotion pack-12 animation set
-  * Attack Animation
+  * Attack Animation for Player
     * Standing Melee Attack Downward
     * Standing Melee Attack Backhand
     * Standing Melee Attack 360 Low
+  * Attack Animation for Enemy
+    * Hook Punch
 
 ## Reference
 * https://blog.unity.com/technology/introducing-the-new-input-system

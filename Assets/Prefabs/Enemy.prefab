@@ -1423,6 +1423,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Controller>k__BackingField: {fileID: 4674994507046127902}
   <PlayerChasingRange>k__BackingField: 10
+  <AttackRange>k__BackingField: 3
   <Animator>k__BackingField: {fileID: 9065748814420376096}
   <ForceReceiver>k__BackingField: {fileID: 7890925193446339179}
   <Agent>k__BackingField: {fileID: 5320236260481297469}
