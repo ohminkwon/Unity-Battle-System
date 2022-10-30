@@ -1337,10 +1337,11 @@ GameObject:
   m_Component:
   - component: {fileID: 3462442124101626781}
   - component: {fileID: 4674994507046127902}
+  - component: {fileID: 6110164213097440019}
   - component: {fileID: 4575008688913469219}
   - component: {fileID: 1256431332023430456}
-  - component: {fileID: 6110164213097440019}
   - component: {fileID: 9065748814420376096}
+  - component: {fileID: 7890925193446339179}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -1385,6 +1386,22 @@ CharacterController:
   m_SkinWidth: 0.025
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 1, z: 0.03}
+--- !u!114 &6110164213097440019
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4271312852819472679}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa72990d5a2608840832906b6a6880b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <Controller>k__BackingField: {fileID: 4674994507046127902}
+  <PlayerChasingRange>k__BackingField: 10
+  <Animator>k__BackingField: {fileID: 9065748814420376096}
+  <ForceReceiver>k__BackingField: {fileID: 7890925193446339179}
 --- !u!114 &4575008688913469219
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1411,19 +1428,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   currentHealth: 0
---- !u!114 &6110164213097440019
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4271312852819472679}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa72990d5a2608840832906b6a6880b9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <Animator>k__BackingField: {fileID: 9065748814420376096}
 --- !u!95 &9065748814420376096
 Animator:
   serializedVersion: 4
@@ -1444,6 +1448,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &7890925193446339179
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4271312852819472679}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c378b090bdd54a042a50406aa2c4e534, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterController: {fileID: 4674994507046127902}
+  smoothTime: 0.3
 --- !u!1 &4563908405040457758
 GameObject:
   m_ObjectHideFlags: 0
