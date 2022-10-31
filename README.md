@@ -13,6 +13,7 @@
     * Paladin_J_Nordstrom
     * Knight_D_Pelegrini
   * Locomotion pack-12 animation set
+  * Great Sword Head Impact
   * Attack Animation for Player
     * Standing Melee Attack Downward
     * Standing Melee Attack Backhand

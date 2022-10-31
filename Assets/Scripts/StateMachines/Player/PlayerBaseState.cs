@@ -31,4 +31,11 @@ public abstract class PlayerBaseState : State
 
         stateMachine.transform.rotation = Quaternion.LookRotation(targetDir);
     }
+    protected void ReturnToMoveState()
+    {
+        if (stateMachine.Targeter.CurrentTarget != null)
+            stateMachine.SwitchState(new PlayerTargetingState(stateMachine));
+        else
+            stateMachine.SwitchState(new PlayerMoveState(stateMachine));
+    }
 }
