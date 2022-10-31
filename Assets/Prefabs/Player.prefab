@@ -1586,8 +1586,6 @@ MonoBehaviour:
   <RotationDamping>k__BackingField: 10
   <Targeter>k__BackingField: {fileID: 2421849146328892801}
   <TargetingMoveSpeed>k__BackingField: 5
-  <Animator>k__BackingField: {fileID: 1102192910226513480}
-  <ForceReceiver>k__BackingField: {fileID: 6771337193476522176}
   <Attacks>k__BackingField:
   - <animationName>k__BackingField: Attack1
     <transitionDuration>k__BackingField: 0.1
@@ -1614,6 +1612,9 @@ MonoBehaviour:
     <Force>k__BackingField: 10
     <Knockback>k__BackingField: 25
   <Weapon>k__BackingField: {fileID: 1789439796921109675}
+  <Health>k__BackingField: {fileID: 8318463164140200911}
+  <Animator>k__BackingField: {fileID: 1102192910226513480}
+  <ForceReceiver>k__BackingField: {fileID: 6771337193476522176}
 --- !u!114 &5104323359457836603
 MonoBehaviour:
   m_ObjectHideFlags: 0

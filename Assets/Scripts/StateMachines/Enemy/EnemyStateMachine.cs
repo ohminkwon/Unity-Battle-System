@@ -14,6 +14,7 @@ public class EnemyStateMachine : StateMachine
     [field: SerializeField] public NavMeshAgent Agent { get; private set; }
     [field: SerializeField] public float MoveSpeed { get; private set; }
 
+    [field: SerializeField] public Health Health { get; private set; }
     [field: SerializeField] public float AttackRange { get; private set; }
     [field: SerializeField] public WeaponDamage Weapon { get; private set; }
     [field: SerializeField] public int AttackDamage { get; private set; }
@@ -31,6 +32,20 @@ public class EnemyStateMachine : StateMachine
         SwitchState(new EnemyIdleState(this));
     }
 
+    private void OnEnable()
+    {
+        Health.OnTakeDamage += Health_OnTakeDamage;
+    }
+    private void OnDisable()
+    {
+        Health.OnTakeDamage -= Health_OnTakeDamage;
+    }
+    private void Health_OnTakeDamage()
+    {
+        SwitchState(new EnemyImpactState(this));
+    }
+
+    // Check radius as a gizmo on window editor
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
