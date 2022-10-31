@@ -1535,14 +1535,15 @@ MonoBehaviour:
   <Controller>k__BackingField: {fileID: 4674994507046127902}
   <PlayerChasingRange>k__BackingField: 10
   <Animator>k__BackingField: {fileID: 9065748814420376096}
-  <ForceReceiver>k__BackingField: {fileID: 7890925193446339179}
   <Agent>k__BackingField: {fileID: 5320236260481297469}
   <MoveSpeed>k__BackingField: 4
   <Health>k__BackingField: {fileID: 1256431332023430456}
   <AttackRange>k__BackingField: 1
   <Weapon>k__BackingField: {fileID: 4908217468022749378}
   <AttackDamage>k__BackingField: 20
-  <AttackKnockback>k__BackingField: 20
+  <AttackKnockback>k__BackingField: 10
+  <ForceReceiver>k__BackingField: {fileID: 7890925193446339179}
+  <Target>k__BackingField: {fileID: 4575008688913469219}
 --- !u!114 &4575008688913469219
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1603,7 +1604,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterController: {fileID: 4674994507046127902}
   navAgent: {fileID: 5320236260481297469}
-  smoothTime: 0.3
+  smoothTime: 0.05
+  impact: {x: 0, y: 0, z: 0}
 --- !u!114 &859678194
 MonoBehaviour:
   m_ObjectHideFlags: 0

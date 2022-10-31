@@ -9,6 +9,7 @@ public class Health : MonoBehaviour
     [SerializeField] private int currentHealth;
 
     public event Action OnTakeDamage;
+    public event Action OnDie;
 
     private void Start()
     {
@@ -20,10 +21,12 @@ public class Health : MonoBehaviour
         if (currentHealth <= 0)
             return;
 
-        currentHealth = Mathf.Max(currentHealth - damage, 0);
-
         OnTakeDamage?.Invoke();
+        currentHealth = Mathf.Max(currentHealth - damage, 0);        
 
         Debug.Log(currentHealth);
+
+        if (currentHealth == 0)
+            OnDie?.Invoke();
     }
 }

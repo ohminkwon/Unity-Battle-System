@@ -9,7 +9,7 @@ public class ForceReceiver : MonoBehaviour
     [SerializeField] private NavMeshAgent navAgent;
     [SerializeField] private float smoothTime = 0.3f;
 
-    private Vector3 impact;
+    [SerializeField] private Vector3 impact;
     private Vector3 dampingVelocity;
 
     private float verticalVelocity;
