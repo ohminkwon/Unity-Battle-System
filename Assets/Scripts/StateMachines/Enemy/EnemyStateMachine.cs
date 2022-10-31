@@ -22,6 +22,7 @@ public class EnemyStateMachine : StateMachine
     // ETC
     [field: SerializeField] public ForceReceiver ForceReceiver { get; private set; }
     [field: SerializeField] public Target Target { get; private set; }
+    [field: SerializeField] public Ragdoll Ragdoll { get; private set; }
 
     public GameObject Player { get; private set; }
 

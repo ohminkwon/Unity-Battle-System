@@ -24,7 +24,8 @@ public class PlayerStateMachine : StateMachine
     // ETC
     [field: SerializeField] public Animator Animator { get; private set; }
     [field: SerializeField] public ForceReceiver ForceReceiver { get; private set; }
- 
+    [field: SerializeField] public Ragdoll Ragdoll { get; private set; }
+
 
     public Transform mainCameraTransform { get; private set; }
 
