@@ -60,6 +60,9 @@ public class EnemyChaseState : EnemyBaseState
     }
     private bool IsInAttackRange()
     {
+        if (enemyStateMachine.Player.IsDead)        
+            return false;
+        
         Vector3 enemyPos = enemyStateMachine.transform.position;
         Vector3 playerPos = enemyStateMachine.Player.transform.position;
         float attackRange = enemyStateMachine.AttackRange;

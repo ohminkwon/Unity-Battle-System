@@ -16,11 +16,16 @@ public class EnemyAttackState : EnemyBaseState
 
     public override void Enter()
     {
+        RotateEnemyToPlayer();
+
         enemyStateMachine.Weapon.SetAttack(enemyStateMachine.AttackDamage, enemyStateMachine.AttackKnockback);
         enemyStateMachine.Animator.CrossFadeInFixedTime(ATTACK_HASH, CROSS_FADE_TIME);        
     }
     public override void Tick(float deltaTime)
     {
+        // Whenever enemy try to attack player, it 100% hit player by this code
+        // RotateEnemyToPlayer();
+
         if (GetNormalizedTime(enemyStateMachine.Animator) >= 1f)
         {           
             enemyStateMachine.SwitchState(new EnemyChaseState(enemyStateMachine));

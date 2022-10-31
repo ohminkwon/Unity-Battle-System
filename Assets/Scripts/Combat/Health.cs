@@ -10,6 +10,8 @@ public class Health : MonoBehaviour
 
     private bool isInvulnerable;
 
+    public bool IsDead => currentHealth == 0; // conditional property
+
     public event Action OnTakeDamage;
     public event Action OnDie;
 

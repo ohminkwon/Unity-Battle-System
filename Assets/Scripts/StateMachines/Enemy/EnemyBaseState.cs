@@ -32,6 +32,9 @@ public abstract class EnemyBaseState : State
     }
     protected bool IsInChaseRange()
     {
+        if (enemyStateMachine.Player.IsDead)
+            return false;
+
         Vector3 enemyPos = enemyStateMachine.transform.position;
         Vector3 playerPos = enemyStateMachine.Player.transform.position;
         float chaseRange = enemyStateMachine.PlayerChasingRange;

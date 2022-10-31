@@ -13,13 +13,15 @@
     * Paladin_J_Nordstrom
     * Knight_D_Pelegrini
   * Locomotion pack-12 animation set
-  * Great Sword Head Impact
   * Attack Animation for Player
     * Standing Melee Attack Downward
     * Standing Melee Attack Backhand
     * Standing Melee Attack 360 Low
   * Attack Animation for Enemy
     * Hook Punch
+  * ETC
+    * Great Sword Head `Impact`
+    * Sword and Shield `Block` Idle
 
 ## Reference
 * https://blog.unity.com/technology/introducing-the-new-input-system
