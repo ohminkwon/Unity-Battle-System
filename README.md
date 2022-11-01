@@ -1,5 +1,6 @@
 ## State Machine
 ![States](./Assets/Art/Sample/statemachine-example.png)
+![UML](./Assets/Art/Sample/UML-Diagram-statemachine.png)
 
 ## New Input System
 ![New Input System](./Assets/Art/Sample/newInput.png)

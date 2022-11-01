@@ -18,7 +18,7 @@ public class EnemyAttackState : EnemyBaseState
     {
         RotateEnemyToPlayer();
 
-        enemyStateMachine.Weapon.SetAttack(enemyStateMachine.AttackDamage, enemyStateMachine.AttackKnockback);
+        enemyStateMachine.Weapon.SetAttack(enemyStateMachine.AttackDamage, enemyStateMachine.KnockbackForce);
         enemyStateMachine.Animator.CrossFadeInFixedTime(ATTACK_HASH, CROSS_FADE_TIME);        
     }
     public override void Tick(float deltaTime)

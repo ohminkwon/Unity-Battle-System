@@ -11,6 +11,9 @@ public class PlayerTargetingState : PlayerBaseState
 
     private const float CROSS_FADE_TIME = 0.1f;
 
+    private Vector2 dodgingDirectionInput;
+    private float remainingDodgeTime;
+
     // Constructor
     public PlayerTargetingState(PlayerStateMachine stateMachine) : base(stateMachine)
     {
@@ -20,6 +23,7 @@ public class PlayerTargetingState : PlayerBaseState
     public override void Enter()
     {
         stateMachine.InputReader.OnCancelEvent += StateMachine_InputReader_OnCancelEvent;
+        stateMachine.InputReader.OnDodgeEvent += StateMachine_InputReader_OnDodgeEvent;
 
         stateMachine.Animator.CrossFadeInFixedTime(TARGETING_HASH, CROSS_FADE_TIME);
     }
@@ -43,7 +47,7 @@ public class PlayerTargetingState : PlayerBaseState
             return;
         }
 
-        Vector3 targetDir = CalculateTargetDirection();        
+        Vector3 targetDir = CalculateTargetDirection(deltaTime);        
         Move(targetDir * stateMachine.TargetingMoveSpeed, deltaTime);
         UpdateAnimator(deltaTime);
         RotatePlayerToTarget();
@@ -51,6 +55,7 @@ public class PlayerTargetingState : PlayerBaseState
     public override void Exit()
     {
         stateMachine.InputReader.OnCancelEvent -= StateMachine_InputReader_OnCancelEvent;
+        stateMachine.InputReader.OnDodgeEvent -= StateMachine_InputReader_OnDodgeEvent;
     }
 
     private void StateMachine_InputReader_OnCancelEvent()
@@ -59,13 +64,32 @@ public class PlayerTargetingState : PlayerBaseState
 
         stateMachine.SwitchState(new PlayerMoveState(stateMachine));
     }
+    private void StateMachine_InputReader_OnDodgeEvent()
+    {
+        if ((Time.time - stateMachine.PreviousDodgeTime) < stateMachine.DodgeCooldown)
+            return;
 
-    private Vector3 CalculateTargetDirection()
+        stateMachine.SetDodgeTime(Time.time);
+        dodgingDirectionInput = stateMachine.InputReader.MovementValue;
+        remainingDodgeTime = stateMachine.DodgeDuration;
+    }
+
+    private Vector3 CalculateTargetDirection(float deltaTime)
     {
         Vector3 targetDir = new Vector3();
 
-        targetDir += stateMachine.transform.right * stateMachine.InputReader.MovementValue.x;
-        targetDir += stateMachine.transform.forward * stateMachine.InputReader.MovementValue.y;
+        if(remainingDodgeTime > 0f)
+        {
+            targetDir += stateMachine.transform.right * dodgingDirectionInput.x * stateMachine.DodgeLength / stateMachine.DodgeDuration;
+            targetDir += stateMachine.transform.forward * dodgingDirectionInput.y * stateMachine.DodgeLength / stateMachine.DodgeDuration;
+
+            remainingDodgeTime = Mathf.Max(remainingDodgeTime - deltaTime, 0f);            
+        }
+        else
+        {
+            targetDir += stateMachine.transform.right * stateMachine.InputReader.MovementValue.x;
+            targetDir += stateMachine.transform.forward * stateMachine.InputReader.MovementValue.y;
+        }      
 
         return targetDir;
     }

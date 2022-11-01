@@ -52,8 +52,8 @@ public class PlayerMoveState : PlayerBaseState
 
     private Vector3 CalculateMoveDirection()
     {
-        Vector3 forward = stateMachine.mainCameraTransform.forward;
-        Vector3 right = stateMachine.mainCameraTransform.right;
+        Vector3 forward = stateMachine.MainCameraTransform.forward;
+        Vector3 right = stateMachine.MainCameraTransform.right;
 
         forward.y = 0f;
         right.y = 0f;
