@@ -18,14 +18,10 @@ public class ForceReceiver : MonoBehaviour
 
     private void Update()
     {
-        if (verticalVelocity < 0f && characterController.isGrounded)
-        {
-            verticalVelocity = Physics.gravity.y * Time.deltaTime;
-        }
-        else
-        {
-            verticalVelocity += Physics.gravity.y * Time.deltaTime;
-        }
+        if (verticalVelocity < 0f && characterController.isGrounded)        
+            verticalVelocity = Physics.gravity.y * Time.deltaTime;        
+        else        
+            verticalVelocity += Physics.gravity.y * Time.deltaTime;        
 
         impact = Vector3.SmoothDamp(impact, Vector3.zero, ref dampingVelocity, smoothTime);
 
@@ -47,9 +43,13 @@ public class ForceReceiver : MonoBehaviour
     public void AddForce(Vector3 force)
     {
         impact += force;
-        if(navAgent != null)
-        {
-            navAgent.enabled = false;
-        }
+
+        if(navAgent != null)        
+            navAgent.enabled = false;        
+    }
+
+    public void Jump(float jumpForce)
+    {
+        verticalVelocity += jumpForce;
     }
 }

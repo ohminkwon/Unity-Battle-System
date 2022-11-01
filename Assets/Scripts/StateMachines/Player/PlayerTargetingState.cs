@@ -24,6 +24,7 @@ public class PlayerTargetingState : PlayerBaseState
     {
         stateMachine.InputReader.OnCancelEvent += StateMachine_InputReader_OnCancelEvent;
         stateMachine.InputReader.OnDodgeEvent += StateMachine_InputReader_OnDodgeEvent;
+        stateMachine.InputReader.OnJumpEvent += StateMachine_InputReader_OnJumpEvent;
 
         stateMachine.Animator.CrossFadeInFixedTime(TARGETING_HASH, CROSS_FADE_TIME);
     }
@@ -56,6 +57,7 @@ public class PlayerTargetingState : PlayerBaseState
     {
         stateMachine.InputReader.OnCancelEvent -= StateMachine_InputReader_OnCancelEvent;
         stateMachine.InputReader.OnDodgeEvent -= StateMachine_InputReader_OnDodgeEvent;
+        stateMachine.InputReader.OnJumpEvent -= StateMachine_InputReader_OnJumpEvent;
     }
 
     private void StateMachine_InputReader_OnCancelEvent()
@@ -115,5 +117,9 @@ public class PlayerTargetingState : PlayerBaseState
             float value = stateMachine.InputReader.MovementValue.x > 0 ? 1f : -1f;
             stateMachine.Animator.SetFloat(TARGETING_RIGHT_HASH, value, 0.1f, deltaTime);
         }
+    }
+    private void StateMachine_InputReader_OnJumpEvent()
+    {
+        stateMachine.SwitchState(new PlayerJumpState(stateMachine));
     }
 }

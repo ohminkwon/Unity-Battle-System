@@ -19,6 +19,7 @@ public class PlayerMoveState : PlayerBaseState
     public override void Enter()
     {
         stateMachine.InputReader.OnTargetEvent += StateMachine_InputReader_OnTargetEvent;
+        stateMachine.InputReader.OnJumpEvent += StateMachine_InputReader_OnJumpEvent;
 
         stateMachine.Animator.CrossFadeInFixedTime(FREE_LOOK_HASH, CROSS_FADE_TIME);
     }
@@ -48,6 +49,7 @@ public class PlayerMoveState : PlayerBaseState
     public override void Exit()
     {
         stateMachine.InputReader.OnTargetEvent -= StateMachine_InputReader_OnTargetEvent;
+        stateMachine.InputReader.OnJumpEvent -= StateMachine_InputReader_OnJumpEvent;
     }
 
     private Vector3 CalculateMoveDirection()
@@ -80,5 +82,9 @@ public class PlayerMoveState : PlayerBaseState
             return;
 
         stateMachine.SwitchState(new PlayerTargetingState(stateMachine));
+    }
+    private void StateMachine_InputReader_OnJumpEvent()
+    {
+        stateMachine.SwitchState(new PlayerJumpState(stateMachine));
     }
 }
