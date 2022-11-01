@@ -20,6 +20,11 @@
     * Standing Melee Attack 360 Low
   * Attack Animation for Enemy
     * Hook Punch
+  * Dodge Animation for Player
+    * Standing Dodge Forward
+    * Standing Dodge Backward
+    * Standing Dodge Right
+    * Standing Dodge Left
   * ETC
     * Great Sword Head `Impact`
     * Sword and Shield `Block` Idle

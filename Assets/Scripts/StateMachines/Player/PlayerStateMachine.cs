@@ -21,16 +21,14 @@ public class PlayerStateMachine : StateMachine
     [field: SerializeField] public WeaponDamage Weapon { get; private set; }
     [field: SerializeField] public Health Health { get; private set; }
 
-    // For Dodge Action
+    // For Dodge State
     [field: SerializeField] public float DodgeDuration { get; private set; }
-    [field: SerializeField] public float DodgeLength { get; private set; }
-    [field: SerializeField] public float DodgeCooldown { get; private set; }
-
-    [field: SerializeField] public float JumpForce { get; private set; }
+    [field: SerializeField] public float DodgeLength { get; private set; }  
 
     // ETC
     [field: SerializeField] public Animator Animator { get; private set; }
     [field: SerializeField] public ForceReceiver ForceReceiver { get; private set; }
+    [field: SerializeField] public float JumpForce { get; private set; }
     [field: SerializeField] public Ragdoll Ragdoll { get; private set; }
 
     public float PreviousDodgeTime { get; private set; } = Mathf.NegativeInfinity;
@@ -60,10 +58,5 @@ public class PlayerStateMachine : StateMachine
     private void Health_OnDie()
     {
         SwitchState(new PlayerDeadState(this));
-    }
-
-    public void SetDodgeTime(float dodgetime)
-    {
-        PreviousDodgeTime = dodgetime;
     }
 }
