@@ -11,11 +11,10 @@ public class EnemyDeadState : EnemyBaseState
 
     public override void Enter()
     {
-        // TODO: Set & Activate Ragdoll
+        // Set & Activate Ragdoll
         enemyStateMachine.Ragdoll.ToggleRagdoll(true);
 
         enemyStateMachine.Weapon.gameObject.SetActive(false);
-
         GameObject.Destroy(enemyStateMachine.Target);     
     }
     public override void Tick(float deltaTime)
