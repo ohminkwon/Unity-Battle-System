@@ -27,6 +27,7 @@
     * Standing Dodge Left
   * Climb Animation for Player
     * Hanging Idle
+    * Freehang Climb
   * ETC
     * Great Sword Head `Impact`
     * Sword and Shield `Block` Idle

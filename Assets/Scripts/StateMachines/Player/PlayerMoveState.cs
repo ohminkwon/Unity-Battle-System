@@ -4,16 +4,19 @@ using UnityEngine;
 
 public class PlayerMoveState : PlayerBaseState
 {
-    private readonly int MOVE_SPEED_HASH = Animator.StringToHash("MoveSpeed"); // For optimization   
-    private readonly int FREE_LOOK_HASH = Animator.StringToHash("FreeLookBlendTree"); // For optimization
+    // For optimization   
+    private readonly int MOVE_SPEED_HASH = Animator.StringToHash("MoveSpeed");
+    private readonly int FREE_LOOK_HASH = Animator.StringToHash("FreeLookBlendTree");
 
     private const float ANIM_DAMP_TIME = 0.1f;
     private const float CROSS_FADE_TIME = 0.1f;
 
-    // Constructor
-    public PlayerMoveState(PlayerStateMachine stateMachine) : base(stateMachine)
-    {
+    private bool shouldFade;
 
+    // Constructor
+    public PlayerMoveState(PlayerStateMachine stateMachine, bool shouldFade = true) : base(stateMachine)
+    {
+        this.shouldFade = shouldFade;
     }
 
     public override void Enter()
@@ -21,7 +24,12 @@ public class PlayerMoveState : PlayerBaseState
         stateMachine.InputReader.OnTargetEvent += StateMachine_InputReader_OnTargetEvent;
         stateMachine.InputReader.OnJumpEvent += StateMachine_InputReader_OnJumpEvent;
 
-        stateMachine.Animator.CrossFadeInFixedTime(FREE_LOOK_HASH, CROSS_FADE_TIME);
+        stateMachine.Animator.SetFloat(MOVE_SPEED_HASH, 0f);
+
+        if (shouldFade)        
+            stateMachine.Animator.CrossFadeInFixedTime(FREE_LOOK_HASH, CROSS_FADE_TIME);        
+        else        
+            stateMachine.Animator.Play(FREE_LOOK_HASH);         
     }
     public override void Tick(float deltaTime)
     {

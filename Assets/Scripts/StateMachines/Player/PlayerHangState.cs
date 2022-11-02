@@ -28,7 +28,12 @@ public class PlayerHangState : PlayerBaseState
             stateMachine.Controller.Move(Vector3.zero);
             stateMachine.ForceReceiver.Reset();
             stateMachine.SwitchState(new PlayerFallState(stateMachine));
-        }           
+        }
+
+        if (stateMachine.InputReader.MovementValue.y > 0f)
+        {            
+            stateMachine.SwitchState(new PlayerPullUpState(stateMachine));
+        }
     }
     public override void Exit()
     {
