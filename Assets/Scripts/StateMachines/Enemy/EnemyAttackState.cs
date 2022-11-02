@@ -26,7 +26,7 @@ public class EnemyAttackState : EnemyBaseState
         // Whenever enemy try to attack player, it 100% hit player by this code
         // RotateEnemyToPlayer();
 
-        if (GetNormalizedTime(enemyStateMachine.Animator) >= 1f)
+        if (GetNormalizedTime(enemyStateMachine.Animator, "Attack") >= 1f)
         {           
             enemyStateMachine.SwitchState(new EnemyChaseState(enemyStateMachine));
         }        

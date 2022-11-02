@@ -19,7 +19,7 @@ public class PlayerTargetingState : PlayerBaseState
 
     public override void Enter()
     {
-        stateMachine.InputReader.OnCancelEvent += StateMachine_InputReader_OnCancelEvent;
+        stateMachine.InputReader.OnTargetEvent += StateMachine_InputReader_OnTargetEvent;
         stateMachine.InputReader.OnDodgeEvent += StateMachine_InputReader_OnDodgeEvent;
         stateMachine.InputReader.OnJumpEvent += StateMachine_InputReader_OnJumpEvent;
 
@@ -52,12 +52,12 @@ public class PlayerTargetingState : PlayerBaseState
     }
     public override void Exit()
     {
-        stateMachine.InputReader.OnCancelEvent -= StateMachine_InputReader_OnCancelEvent;
+        stateMachine.InputReader.OnTargetEvent -= StateMachine_InputReader_OnTargetEvent;
         stateMachine.InputReader.OnDodgeEvent -= StateMachine_InputReader_OnDodgeEvent;
         stateMachine.InputReader.OnJumpEvent -= StateMachine_InputReader_OnJumpEvent;
     }
 
-    private void StateMachine_InputReader_OnCancelEvent()
+    private void StateMachine_InputReader_OnTargetEvent()
     {
         stateMachine.Targeter.Cancel();
 

@@ -5,10 +5,10 @@ using UnityEngine;
 
 public class LedgeDetector : MonoBehaviour
 {
-    public event Action<Vector3> OnLedgeDetectEvent;
+    public event Action<Vector3, Vector3> OnLedgeDetectEvent;
 
     private void OnTriggerEnter(Collider other)
     {
-        OnLedgeDetectEvent?.Invoke(other.transform.forward);
+        OnLedgeDetectEvent?.Invoke(other.transform.forward, other.ClosestPointOnBounds(transform.position));
     }
 }
