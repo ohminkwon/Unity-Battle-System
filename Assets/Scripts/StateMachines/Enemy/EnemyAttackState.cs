@@ -24,7 +24,7 @@ public class EnemyAttackState : EnemyBaseState
     public override void Tick(float deltaTime)
     {
         // Whenever enemy try to attack player, it 100% hit player by this code
-        // RotateEnemyToPlayer();
+        RotateEnemyToPlayer();
 
         if (GetNormalizedTime(enemyStateMachine.Animator, "Attack") >= 1f)
         {           

@@ -28,11 +28,10 @@ public class PlayerStateMachine : StateMachine
     // ETC
     [field: SerializeField] public Animator Animator { get; private set; }
     [field: SerializeField] public ForceReceiver ForceReceiver { get; private set; }
-    [field: SerializeField] public float JumpForce { get; private set; }
-    [field: SerializeField] public LedgeDetector LedgeDetector { get; private set; }
+    [field: SerializeField] public float JumpForce { get; private set; }   
     [field: SerializeField] public Ragdoll Ragdoll { get; private set; }
+    [field: SerializeField] public LedgeDetector LedgeDetector { get; private set; }
 
-    public float PreviousDodgeTime { get; private set; } = Mathf.NegativeInfinity;
     public Transform MainCameraTransform { get; private set; }
 
     private void Start()
