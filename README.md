@@ -11,7 +11,7 @@
 ## New Input System
 ![New Input System](./Assets/Art/Sample/newInput.png)
 
-기존 인풋 시스템 대신 크로스 플랫폼으로 편리하게 확장 가능한 방식.
+> 기존 인풋 시스템 보다 크로스 플랫폼으로 더 편리하게 확장 가능한 방식.
 
 ## Resources from...
 * [Mixamo](https://mixamo.com)

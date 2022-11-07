@@ -2246,8 +2246,8 @@ MonoBehaviour:
   <Animator>k__BackingField: {fileID: 1102192910226513480}
   <ForceReceiver>k__BackingField: {fileID: 6771337193476522176}
   <JumpForce>k__BackingField: 4
-  <LedgeDetector>k__BackingField: {fileID: 5780783382953715477}
   <Ragdoll>k__BackingField: {fileID: 7818896030468236620}
+  <LedgeDetector>k__BackingField: {fileID: 5780783382953715477}
 --- !u!114 &5104323359457836603
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2340,7 +2340,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
-  currentHealth: 0
+  currentHealth: 100
 --- !u!114 &7818896030468236620
 MonoBehaviour:
   m_ObjectHideFlags: 0
